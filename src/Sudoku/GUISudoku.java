@@ -272,7 +272,9 @@ public class GUISudoku extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			/*
+			 * Chequea si el jugador gano la partida, si no es asi marca las celdas mal completadas.
+			 */
 			boolean partidaGanada=juego.revisar();
 			
 			if(partidaGanada==true) {

@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Modela un panel de celdas del sudoku.
+ */
 public class Bloque {
 
 //attributes
@@ -35,11 +38,12 @@ public class Bloque {
 		return cantCeldas;
 	}
 	
+	/*
+	 * Recorre las celdas del bloque pintando todas las que se encuentren en conflicto.
+	 * retorna verdadero si no hay celdas en conflicto
+	 */
 	public boolean bloqueValido(){
-		/*
-		 * Recorre las celdas del bloque pintando todas las que se encuentren en conflicto.
-		 * retorna verdadero si no hay celdas en conflicto
-		 */
+		
 		pertenece=new HashMap<Integer,Celda>(9);
 		boolean resp=true;
 		boolean esValido=true;
@@ -71,11 +75,12 @@ public class Bloque {
 		return resp;
 	}
 	
+	/*
+	 * Recorre las celdas del bloque hasta encontrar una en conflicto (Metodo empleado en la inicializacion)
+	 * retorna verdadero si no hay celdas en conflicto
+	 */
 	public boolean bloqueValidoNoPintar(){
-		/*
-		 * Recorre las celdas del bloque hasta encontrar una en conflicto (Metodo empleado en la inicializacion)
-		 * retorna verdadero si no hay celdas en conflicto
-		 */
+	
 		pertenece=new HashMap<Integer,Celda>(cantCeldas*cantCeldas);
 		boolean resp=true;
 		boolean esValido=true;
@@ -99,10 +104,11 @@ public class Bloque {
 		return resp;
 	}
 	
+	/*
+	 * Pinta todas las celdas del bloque con el color que recibe
+	 */
 	public void pintarBloque(Color c) {
-		/*
-		 * Pinta todas las celdas del bloque con el color que recibe
-		 */
+		
 		Celda celdaActual;
 		for(int fila=0;fila<3;fila++) {
 			for(int columna=0;columna<3;columna++) {
@@ -113,6 +119,9 @@ public class Bloque {
 		}
 	}
 	
+	/*
+	 * Elimina aleatoriamente el contenido de unas celdas y bloquea el de otras para inicializar el juego.
+	 */
 	public void eliminarValoresAleatoriamente() {
 		Random rnd=new Random();
 		int eliminados=0;

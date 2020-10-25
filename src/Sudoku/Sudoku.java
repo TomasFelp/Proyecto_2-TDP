@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Random;
 
+/*
+ * Modela la logica del juego
+ */
 public class Sudoku {
 //Attributes
 	private Bloque[][] bloques;
@@ -34,10 +37,7 @@ public class Sudoku {
 					bloques[bloqueI][bloqueJ]=new Bloque();
 				}
 			}
-
-            /*
-             * Competar los archivos faltantes, hacer que los elija al azar. borrar todo lo que no sirva...			
-             */
+	
 			InputStream in = getClass().getResourceAsStream("/Archivos/sudoku"+rnd.nextInt(10)+".txt");
 			Scanner scn = new Scanner(in);
 
@@ -62,11 +62,11 @@ public class Sudoku {
 					if(num>9 || num<0)//chequeo que todos los elementos del archivo sean validos
 						estructuraDeArchivoValida=false;
 				}
-				if(renglon.length()-1!=16)//Chequeo que no haya mas de 9 elementos por fila.
+				if(renglon.length()-1!=16)//Chequeo que no haya más de 9 elementos por fila.
 					estructuraDeArchivoValida=false;
 				
 			}
-			if(scn.hasNext()) //Chequeo que el archivo no mas filas.
+			if(scn.hasNext()) //Chequeo que el archivo no tenga más filas.
 				estructuraDeArchivoValida=false;
 			
 			if(estructuraDeArchivoValida==true)
@@ -114,11 +114,12 @@ public class Sudoku {
 		c.actualizar3();
 	}
 	
+	/*
+	 * Recorre las celdas hasta encontrar alguna en conflicto.
+	 * Retorna verdadero si y solo si no hay celdas en conflicto.
+	 */
 	private boolean revisarInicializacion() {
-		/*
-		 * Recorre las celdas hasta encontrar alguna en conflicto.
-		 * Retorna verdadero si y solo si no hay celdas en conflicto.
-		 */
+		
 		Bloque bloqueActual;
 		boolean resp=true;
 		
@@ -141,11 +142,12 @@ public class Sudoku {
 		return resp;
 	}
 	
+	/*
+	 * Recorre las celdas marcando todas las que esten en conflicto.
+	 * Retorna verdadero si y solo si no hay celdas en conflicto.
+	 */
 	public boolean revisar(){
-		/*
-		 * Recorre las celdas marcando todas las que esten en conflicto.
-		 * Retorna verdadero si y solo si no hay celdas en conflicto.
-		 */
+		
 		Bloque bloqueActual;
 		boolean resp=true,esValido;
 		
@@ -172,11 +174,11 @@ public class Sudoku {
 		return resp;
 	}
 	
-	public void partidaGanada(){
 	/*
 	 * Pinta todas las celdas de verde.
 	 */
-		
+	public void partidaGanada(){
+	
 		Bloque bloqueActual;
 			for(int filaBloque=0;filaBloque<3;filaBloque++) {
 				for(int columnaBloque=0;columnaBloque<3;columnaBloque++) {
@@ -186,11 +188,11 @@ public class Sudoku {
 		   }
 	}
 	
+	/*
+	 * Recorre la fila pintando todas las celdas en conflicto. 
+	 * Retorna verdadero si y solo si no hay celdas en conflicto.
+	 */
 	private boolean filaValida(int i) {
-		/*
-		 * Recorre la fila pintando todas las celdas en conflicto. 
-		 * Retorna verdadero si y solo si no hay celdas en conflicto.
-		 */
 
 		HashMap<Integer,Celda> pertenece=new HashMap<Integer, Celda>(9);
 		boolean resp=true;
@@ -229,11 +231,12 @@ public class Sudoku {
 		return resp;
 	}
 	
+	/*
+	 * Recorre la columna pintando todas las celdas en conflicto.
+	 * Retorna verdadero si y solo si no hay celdas en conflicto. 
+	 */
 	private boolean columnaValida(int i) {
-		/*
-		 * Recorre la columna pintando todas las celdas en conflicto.
-		 * Retorna verdadero si y solo si no hay celdas en conflicto. 
-		 */
+		
 		HashMap<Integer,Celda> pertenece=new HashMap<Integer, Celda>(9);
 		boolean resp=true;
 		Bloque bloqueActual;
@@ -271,11 +274,12 @@ public class Sudoku {
 		return resp;
 	}
 	
+	/*
+	 * Recorre la fila hasta encontrar una celda en conflicto (Metodo empleado en la inicializacion).
+	 * Retorna verdadero si y solo si no hay celdas en conflicto.
+	 */
 	private boolean filaValidaNoPintar(int i) {
-		/*
-		 * Recorre la fila hasta encontrar una celda en conflicto (Metodo empleado en la inicializacion).
-		 * Retorna verdadero si y solo si no hay celdas en conflicto.
-		 */
+		
 		HashMap<Integer,Celda> pertenece=new HashMap<Integer, Celda>(9);
 		boolean resp=true;
 		Bloque bloqueActual;
@@ -309,11 +313,12 @@ public class Sudoku {
 		return resp;
 	}
 	
+	/*
+	 * Recorre la columna hasta encontrar una celda en conflicto (Metodo empleado en la inicializacion).
+	 * Retorna verdadero si y solo si no hay celdas en conflicto.
+	 */
 	private boolean columnaValidaNoPintar(int i) {
-		/*
-		 * Recorre la columna hasta encontrar una celda en conflicto (Metodo empleado en la inicializacion).
-		 * Retorna verdadero si y solo si no hay celdas en conflicto.
-		 */
+		
 		HashMap<Integer,Celda> pertenece=new HashMap<Integer, Celda>(9);
 		boolean resp=true;
 		Bloque bloqueActual;

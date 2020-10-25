@@ -21,6 +21,9 @@ public class EntidadGrafica {
 	}
 	
 //Methods
+	/*
+	 * Cambia la figura que contiene el objeto segun el número que recibe como parametro.
+	 */
 	public void sincronizarImagen(Integer valor) {
 		
 	etiquetaContenedora.setBackground(Color.WHITE);

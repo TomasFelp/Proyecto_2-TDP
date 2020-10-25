@@ -14,8 +14,11 @@ public class Celda {
 	}
 	
 //Methods
+	/*
+	 * Aumenta el valor de la celda en 1
+	 */
 	public void actualizar(){
-		//aumenta el valor en 1
+		
 		if(celdaBloqueada==false){
 			if(valor!=null && valor<fig.getCantImagenes())
 				valor=valor+1;
@@ -27,19 +30,25 @@ public class Celda {
 		
 	}
 	
+	/*
+	 * Disminuye el valor de la celda en 1
+	 */
 	public void actualizar2(){
-		//disminuye el valor en 1
+
 		if(celdaBloqueada==false) {
 			if(valor!=null && valor>1)
 				valor=valor-1;
 			 else
 				valor=9;
-		fig.sincronizarImagen(valor);
-			//sincronizarImagen();
+			
+			fig.sincronizarImagen(valor);
 		}
 		
 	}
 	
+	/*
+	 * Borra el contenido de la celda
+	 */
 	public void actualizar3(){
 		//borra el contenido de la celda
 		if(celdaBloqueada==false) {
